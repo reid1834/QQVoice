@@ -1,19 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.reid.qqvoice.MainActivity">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="#FFF"
+        android:paddingBottom="20dp" >
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btn_normal"
+                    style="@style/AudioImgStyle"
+                    android:src="@mipmap/record"
+                    android:onClick="startChange"/>
+                <TextView
+                    style="@style/AudioTextStyle"
+                    android:text="原声"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btn_luoli"
+                    style="@style/AudioImgStyle"
+                    android:src="@mipmap/luoli"
+                    android:onClick="startChange"/>
+                <TextView
+                    style="@style/AudioTextStyle"
+                    android:text="萝莉"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btn_dashu"
+                    style="@style/AudioImgStyle"
+                    android:src="@mipmap/dashu"
+                    android:onClick="startChange"/>
+                <TextView
+                    style="@style/AudioTextStyle"
+                    android:text="大叔"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btn_jingsong"
+                    style="@style/AudioImgStyle"
+                    android:src="@mipmap/jingsong"
+                    android:onClick="startChange"/>
+                <TextView
+                    style="@style/AudioTextStyle"
+                    android:text="惊悚"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btn_gaoguai"
+                    style="@style/AudioImgStyle"
+                    android:src="@mipmap/gaoguai"
+                    android:onClick="startChange"/>
+                <TextView
+                    style="@style/AudioTextStyle"
+                    android:text="搞怪"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btn_kongling"
+                    style="@style/AudioImgStyle"
+                    android:src="@mipmap/kongling"
+                    android:onClick="startChange"/>
+                <TextView
+                    style="@style/AudioTextStyle"
+                    android:text="空灵"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
