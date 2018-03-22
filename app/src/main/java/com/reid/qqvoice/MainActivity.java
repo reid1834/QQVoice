@@ -1,25 +1,37 @@
 package com.reid.qqvoice;
 
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private  PermissionManager mPermissionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        mPermissionManager = new PermissionManager(this);
+
+        if (!mPermissionManager.checkCameraLaunchPermissions()) {
+            if (!mPermissionManager.requestCameraAllPermissions()) {
+                return;
+            }
+        }
+        
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -82,6 +94,28 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+    
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult(), grantResults = " + grantResults.length);
+        if (grantResults.length <= 0) {
+            return;
+        }
+        if (mPermissionManager.getCameraLaunchPermissionRequestCode()
+                == requestCode) {
+            // If permission all on, activity will resume.
+            if (!mPermissionManager.isCameraLaunchPermissionsResultReady(
+                    permissions, grantResults)) {
+                // more than one critical permission was denied
+                // activity finish, exit and destroy
+
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.denied_required_permission), Toast.LENGTH_SHORT)
+                        .show();
+
+                finish();
+            }
+        }
     }
 
 }
