@@ -31,7 +31,6 @@ public class PermissionManager {
     private void initPermissionList() {
         mPermissionList.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         mPermissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        mPermissionList.add(Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS);
     }
 
     public boolean checkCameraLaunchPermissions() {
@@ -89,8 +88,6 @@ public class PermissionManager {
                 PackageManager.PERMISSION_GRANTED);
         perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 PackageManager.PERMISSION_GRANTED);
-        perms.put(Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
-                PackageManager.PERMISSION_GRANTED);
 
         for (int i = 0; i < permissions.length; i++) {
             perms.put(permissions[i], grantResults[i]);
@@ -99,8 +96,6 @@ public class PermissionManager {
         if (perms.get(Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
                 && perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED
-                && perms.get(Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)
                 == PackageManager.PERMISSION_GRANTED) {
             return true;
         }

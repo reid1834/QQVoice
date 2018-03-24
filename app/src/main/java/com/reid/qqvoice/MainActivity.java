@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult(), grantResults = " + grantResults.length);
-        if (grantResults.length <= 0) {
+        if (permissions.length <= 0) {
             return;
         }
         if (mPermissionManager.getCameraLaunchPermissionRequestCode()
